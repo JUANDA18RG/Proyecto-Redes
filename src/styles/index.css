@@ -1,0 +1,270 @@
+html, body{
+  height: 100%;
+  width: 100%;
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+}
+ 
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body{
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+h1{
+  font-size: 5rem;
+  line-height: 1.1;
+  pointer-events: all;
+}
+
+
+.canvas{
+  position: fixed !important;
+  inset: 0 !important;
+}
+
+.app{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+  bottom: 50px;
+  margin-left: 15px;
+  text-align: center;
+}
+
+.app .hero{
+  position: absolute;
+  top: 10px;
+  left: 2rem;
+  top:150px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input{
+  margin: 10px;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+
+/* Estilos para el navbar */
+.navbar {
+  background-color: #070707; /* Color de fondo del navbar */
+  color: #fff; /* Color del texto en el navbar */
+  padding: 1rem; /* Espaciado interno del navbar */
+  position: fixed; /* Fija el navbar en la parte superior */
+  top: 0; /* Coloca el navbar en la parte superior */
+  left: 0; /* Asegura que el navbar ocupe toda la anchura */
+  width: 100%; /* Asegura que el navbar ocupe toda la anchura */
+  z-index: 1000; /* Ajusta el índice Z para estar por encima del contenido */
+}
+
+/* Estilos para la lista de navegación */
+.navbar ul {
+  list-style: none; /* Quita los marcadores de lista */
+  padding: 0;
+  display: flex;
+  justify-content: space-around; /* Distribuye los elementos de la lista horizontalmente */
+}
+
+/* Estilos para los elementos de la lista de navegación */
+.navbar li {
+  margin: 0;
+}
+
+/* Estilos para los enlaces de navegación */
+.navbar a {
+  text-decoration: none; /* Quita la decoración de enlace subrayado */
+  color: #fff; /* Color del texto de los enlaces */
+  font-weight: bold; /* Estilo de fuente en negrita */
+  transition: color 0.3s; /* Transición suave del color al pasar el ratón */
+  font-size: 20px;
+}
+
+/* Cambio de color al pasar el ratón sobre los enlaces */
+.navbar a:hover {
+  color: #ff6600; /* Color de texto al pasar el ratón */
+}
+
+
+/* Estilos para los párrafos de descripción */
+.description {
+  display: none; /* Oculta los párrafos de descripción de forma predeterminada */
+  padding: 2rem; /* Agrega espaciado interno a los párrafos */
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+  position: absolute; /* Permite superponer los párrafos sobre el contenido */
+  top: 100%; /* Coloca los párrafos debajo de los enlaces */
+  left: 0;
+  width: 100%; /* Ocupa todo el ancho disponible */
+  z-index: 1; /* Asegura que los párrafos estén por encima del contenido */
+  color: #fff; /* Color del texto */
+  border-top: 2px solid #ffffff; /* Línea superior naranja */
+}
+
+/* Mostrar el párrafo al pasar el ratón por encima del enlace */
+li:hover .description {
+  display: block;
+  text-align: center;
+}
+
+/* Estilos para los enlaces de navegación */
+.navbar a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+/* Cambio de color al pasar el ratón sobre los enlaces */
+.navbar a:hover {
+  color: #000000;
+  background-color: white;
+  padding: 15px;
+  border-radius: 20px;
+}
+
+/* Estilos para el contenedor de cada elemento li */
+.item-container {
+  display: flex;
+  flex-direction: row-reverse; /* Invierte la dirección de fila para la imagen a la derecha */
+  width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+
+
+
+
+@keyframes backgroundChange {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.navbar {
+  animation: backgroundChange 10s infinite;
+  background-size: 200% 200%;
+  background-image: linear-gradient(20deg, #030369, #9a1786, #530369, #d21a1a,#ff6600);
+  display: inline-block;
+  padding: 20px;
+}
+
+.Titulonavbar {
+  font-size: 50px;
+  animation: backgroundChange 10s infinite;
+  background-size: 200% 200%;
+  background-image: linear-gradient(20deg, #030369, #9a1786, #530369, #d21a1a,#ff6600);
+  border-radius: 0; /* Elimina el border-radius */
+  padding: 20px; /* Elimina cualquier relleno interior */
+  line-height: 50px; /* Ajusta la altura de línea para que coincida con la altura del texto */
+  margin-bottom: 20px;
+  display: inline-block;
+  border-radius: 20px;
+}
+
+
+@keyframes borderAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.Logo {
+  border: 8px solid transparent;
+  transition: border-color 10s linear;
+  animation: borderAnimation 10s infinite alternate;
+  width: 200px;
+  height: 180px;
+  margin: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+@keyframes borderAnimation {
+  0% {
+    border-color: #030369;
+  }
+  25% {
+    border-color: #9a1786;
+  }
+  50% {
+    border-color: #530369;
+  }
+  75% {
+    border-color: #d21a1a;
+  }
+  100% {
+    border-color: #ff6600;
+  }
+}
+
+.input:focus {
+  border-color: transparent; /* Cambia el borde al enfocar el input */
+  outline: none;
+}
+
+
+
+/* Define la animación llamada 'pulse' */
+@keyframes pulse {
+  0% {
+    transform: scale(1); /* Escala inicial (sin cambio) */
+  }
+  50% {
+    transform: scale(1.1); /* Escala aumentada al 50% de la animación */
+  }
+  100% {
+    transform: scale(1); /* Vuelve a la escala original al final de la animación */
+  }
+}
+
+/* Aplica la animación 'pulse' a la clase .Marca */
+.Marca {
+  animation: pulse 2s infinite; /* Aplica la animación durante 1 segundo, de forma infinita */
+}
+
+.Texto{
+  font-size: 20px;
+  color: #fff;
+  align-items: justify;
+}
