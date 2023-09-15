@@ -11,22 +11,26 @@ import {HomeScene} from '@/scenes';
           <a href="">Inicio</a>
           <div className="description">
           <h1 className="Titulonavbar">Nuestra Pagina</h1>
-          <p className="Texto">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto aperiam quasi ipsa, nihil sunt sapiente tenetur veritatis consectetur nisi sed totam dicta facilis facere voluptatibus, reprehenderit amet suscipit in cupiditate.</p>
+          <p className="Texto">¡Bienvenidos, ingenieros! 
+En esta página, podrán visualizar un video que explica las capas del modelo OSI y su funcionamiento. El video se proyecta en una pantalla de computadora y se puede disfrutar en 360 grados, con todos sus componentes representados en 3D. Esta experiencia se ha desarrollado utilizando TypeScript y three.js.</p>
 
           </div>
         </li>
         <li>
           <a href="">Videos</a>
           <div className="description">
-          <h1 className="Titulonavbar">Funcionamineto de los Videos</h1>
-          <p className="Texto">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto aperiam quasi ipsa, nihil sunt sapiente tenetur veritatis consectetur nisi sed totam dicta facilis facere voluptatibus, reprehenderit amet suscipit in cupiditate.</p>
+          <h1 className="Titulonavbar">Funcionamiento del video</h1>
+          <p className="Texto">Este código React crea un componente llamado VideoPlane que muestra un video en un plano 3D utilizando three.js. El video se reproduce automáticamente al montar el componente y se utiliza como textura en el plano, lo que permite integrar videos en una escena 3D de manera efectiva.</p>
           </div>
         </li>
         <li>
           <a href="">Acerca De...</a>
           <div className="description">
           <h1 className="Titulonavbar">Nosotros Somos</h1>
-          <p className="Texto">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Architecto aperiam quasi ipsa, nihil sunt sapiente tenetur veritatis consectetur nisi sed totam dicta facilis facere voluptatibus, reprehenderit amet suscipit in cupiditate.</p>
+          <p className="Texto">Nicolas Arturo Valencia : Diseñador<br />
+          Santiago Garcia Gil : Encargado de la documentacion <br />
+          Juan David Ramirez Grismaldo: Desarrollador
+          </p>
           </div>
         </li>
       </ul>
