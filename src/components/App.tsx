@@ -1,9 +1,24 @@
 
 import { Canvas } from "@react-three/fiber";
-import {HomeScene} from '@/scenes';
+import {HomeScene} from '@/scenes/HomeScene';
+import { useState } from 'react';
+
+
  export const App=() =>{
+
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+  const [selectedOption, setSelectedOption] = useState('Osi.mp4');
+
+  const toggleDropdown = () => {
+    setDropdownVisible(!dropdownVisible);
+  }
+
+  const changeOption = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption(event.target.value);
+  }
  
   return (
+    
    <> 
    <section className="navbar">
       <ul>
@@ -40,16 +55,18 @@ En esta página, podrán visualizar un video que explica las capas del modelo OS
       <section className="hero">
         <h1 className="Marca">MP4</h1>
         <h3  className="submarca">Reproductor de video</h3>
-        <p  className="textomarca">Pon un link de cualquier video y lo reproducimos</p>
-        <img className='Logo' src="https://colombiaestudia.com/wp-content/uploads/2022/03/Logo_UniValle.jpg" alt="" />
+        <p  className="textomarca">Puedes aprender del Modelo OSI,Vlan y Subbneting con videos sobre esos temas</p>
+        <img className='Logo' src="https://colombiaestudia.com/wp-content/uploads/2022/03/Logo_UniValle.jpg" alt="Univalle" />
       </section>
     </main>
+    
+
     
     <Canvas className="canvas" 
     shadows 
     camera={{ position: [0, 30, 60], fov: 15 }}
     >
-    <HomeScene/>
+     <HomeScene />
     </Canvas>
     </>
   );

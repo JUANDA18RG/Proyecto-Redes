@@ -1,8 +1,12 @@
 import { VideoPlane } from "@/components";
 import { Environment, GizmoHelper, OrbitControls, Stars} from "@react-three/drei";
+import { useState } from 'react';
 
 
 export const HomeScene = () => {
+
+  const [currentVideo, setCurrentVideo] = useState('Osi.mp4');
+
   return (
     <>
     <OrbitControls />
@@ -40,9 +44,31 @@ export const HomeScene = () => {
         <Environment preset="city" />
         <GizmoHelper alignment="bottom-right" margin={[100, 100]} />
         <group position={[0, -3, 0]}>
-        {/* VideoPlane del frente */}
         
-        <VideoPlane videourl='/Osi.mp4'/>
+        
+        
+      <OrbitControls />
+      <pointLight
+        position={[10, 15, 15]}
+        color="purple"
+        castShadow
+        intensity={10} /* Aumentar la intensidad de la luz */
+        distance={30} /* Aumentar la distancia de alcance de la luz */
+      />
+      <VideoPlane videourl={currentVideo} setVideoUrl={setCurrentVideo} receiveShadow castShadow />
+     
+      <directionalLight
+        position={[15, 10, -5]}
+        color="blue"
+        castShadow
+        intensity={15} /* Aumentar la intensidad de la luz */
+      />
+       <directionalLight
+        position={[-15, 10, 5]}
+        color="yellow"
+        castShadow
+        intensity={3} /* Aumentar la intensidad de la luz */
+      />
         
         {/* Televisor */}
         <mesh castShadow receiveShadow position={[0, 5, 0]}>
