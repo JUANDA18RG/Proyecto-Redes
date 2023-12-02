@@ -2,14 +2,16 @@ import {useEffect, useState} from 'react';
 import * as THREE from 'three';
 import { Text } from '@react-three/drei';
 
-export const VideoPlane = ({videourl, setVideoUrl, ...props}:any) => {
+export const VideoPlane = ({setVideoUrl, ...props}:any) => {
+  const videos = ['Osi.mp4', 'Vlan.mp4', 'Subbne.mp4', 'Protocolo.mp4', 'https://www.youtube.com/watch?v=4Bj3QePATuc&ab_channel=DavooXeneizePlus'];
+  const [videoIndex, setVideoIndex] = useState(0);
   const [video, setVideo] = useState<HTMLVideoElement | null>(null);
   const [isPaused, setIsPaused] = useState(true);
-  
+  const [showVideoName, setShowVideoName] = useState(true);
 
   useEffect(() => {
     const videoElement = document.createElement('video');
-    videoElement.src = videourl;
+    videoElement.src = videos[videoIndex];
     videoElement.crossOrigin = 'anonymous';
     videoElement.loop = true;
     videoElement.muted = false; // Asegúrate de que el video no esté silenciado
@@ -20,26 +22,24 @@ export const VideoPlane = ({videourl, setVideoUrl, ...props}:any) => {
         if (videoElement.paused) {
           videoElement.play();
           setIsPaused(false);
+          setShowVideoName(false); // Oculta el nombre del video cuando se reproduce
         } else {
           videoElement.pause();
           setIsPaused(true);
+          setShowVideoName(true); // Muestra el nombre del video cuando se pausa
         }
-      } else if (event.code === 'ArrowRight' || event.code === 'ArrowLeft' ) {
-        // Detiene el video actual antes de cambiar a un nuevo video
+      } else if (event.code === 'ArrowRight') {
+        // Detén el video actual
         videoElement.pause();
-        setIsPaused(true);
-        setVideoUrl((prevUrl: string) => {
-          switch (prevUrl) {
-            case 'Osi.mp4':
-              return 'Vlan.mp4';
-            case 'Vlan.mp4':
-              return 'Subbne.mp4';
-              case 'Subbne.mp4':
-                return 'Protocolo.mp4'; 
-            default:
-              return 'Osi.mp4';
-          }
-        });
+        // Avanza al siguiente video
+        setVideoIndex((prevIndex) => (prevIndex + 1) % videos.length);
+        setShowVideoName(true); // Muestra el nombre del video cuando cambias de video
+      } else if (event.code === 'ArrowLeft') {
+        // Detén el video actual
+        videoElement.pause();
+        // Retrocede al video anterior
+        setVideoIndex((prevIndex) => (prevIndex - 1 + videos.length) % videos.length);
+        setShowVideoName(true); // Muestra el nombre del video cuando cambias de video
       }
     };
 
@@ -48,7 +48,7 @@ export const VideoPlane = ({videourl, setVideoUrl, ...props}:any) => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [videourl, setVideoUrl]);
+  }, [videoIndex]);
 
   return (
     <mesh castShadow receiveShadow position={[0,5,0.6]} scale={[16,9,1]} {...props}>
@@ -56,21 +56,18 @@ export const VideoPlane = ({videourl, setVideoUrl, ...props}:any) => {
       {video && <meshBasicMaterial>
         <videoTexture attach="map" args={[video]} encoding={THREE.sRGBEncoding}/>
       </meshBasicMaterial>}
-      {isPaused && <group position={[0, 0, 0.1]}>
-    <mesh position={[0, 0, -0.01]} scale={[1, 0.5, 1]}>
-      <planeGeometry />
-      <meshBasicMaterial color="white" />
-    </mesh>
-    <Text 
-      fontSize={0.15} 
-      color="red" 
-      anchorX="center"
-      anchorY="middle" 
-    >
-      {videourl}
-    </Text>
-  </group>
-}
+      {showVideoName && (
+        <Text
+          position={[0, 0, 0.2]}
+          fontSize={0.1}
+          color='red'
+          anchorX='center'
+          anchorY='middle'
+          textAlign='center'
+        >
+          {videos[videoIndex]}
+        </Text>
+      )}
     </mesh>
   );
 }
