@@ -6,7 +6,7 @@ export const VideoPlane = ({setVideoUrl, ...props}:any) => {
   const videos = ['Osi.mp4', 'Vlan.mp4', 'Subbne.mp4', 'Protocolo.mp4', 'https://www.youtube.com/watch?v=4Bj3QePATuc&ab_channel=DavooXeneizePlus'];
   const [videoIndex, setVideoIndex] = useState(0);
   const [video, setVideo] = useState<HTMLVideoElement | null>(null);
-  const [isPaused, setIsPaused] = useState(true);
+  const [ ,setIsPaused] = useState(true);
   const [showVideoName, setShowVideoName] = useState(true);
 
   useEffect(() => {

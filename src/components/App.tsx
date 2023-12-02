@@ -1,22 +1,11 @@
 
 import { Canvas } from "@react-three/fiber";
 import {HomeScene} from '@/scenes/HomeScene';
-import { useState } from 'react';
 
 
  export const App=() =>{
 
-  const [dropdownVisible, setDropdownVisible] = useState(false);
-  const [selectedOption, setSelectedOption] = useState('Osi.mp4');
 
-  const toggleDropdown = () => {
-    setDropdownVisible(!dropdownVisible);
-  }
-
-  const changeOption = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelectedOption(event.target.value);
-  }
- 
   return (
     
    <> 
