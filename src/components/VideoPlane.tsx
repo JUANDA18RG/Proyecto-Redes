@@ -9,6 +9,21 @@ export const VideoPlane = ({setVideoUrl, ...props}:any) => {
   const [ ,setIsPaused] = useState(true);
   const [showVideoName, setShowVideoName] = useState(true);
 
+
+const API_KEY = 'AIzaSyAv8FuFSLJjVgo_ERedqxbQMkq04Bu8N_Q'; // Reemplaza esto con tu API key de YouTube
+const VIDEO_ID = '4Bj3QePATuc'; // El ID del video de YouTube
+
+fetch(`https://www.googleapis.com/youtube/v3/videos?id=${VIDEO_ID}&part=snippet,contentDetails,statistics,status&key=${API_KEY}`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Error de red al intentar obtener el video de YouTube');
+    }
+    return response.json();
+  })
+  .then(data => console.log(data))
+  .catch(error => console.error('Error:', error));
+  
+
   useEffect(() => {
     const videoElement = document.createElement('video');
     videoElement.src = videos[videoIndex];
