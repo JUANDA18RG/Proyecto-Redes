@@ -75,14 +75,14 @@ export const HomeScene = () => {
           <boxGeometry args={[17, 10, 1]} />
           <meshStandardMaterial color='white' roughness={0.2} metalness={0.8} envMapIntensity={0.5} />
         </mesh>
-        {/* culo del televisor */}
+        {/* parte de atras del televisor */}
         <mesh position={[0, 5, -1]}>
           <boxGeometry args={[2, 10, 2]} /> {/* Los argumentos son la anchura, la altura y la profundidad del cubo */}
           <meshStandardMaterial
             color='white' roughness={0.2} metalness={0.8} envMapIntensity={0.5} 
           />
         </mesh>
-          {/* culo del televisor */}
+          {/*  parte de atras del televisor */}
           <mesh position={[0, 0, -2]}>
           <boxGeometry args={[5, 1, 5]} /> {/* Los argumentos son la anchura, la altura y la profundidad del cubo */}
           <meshStandardMaterial

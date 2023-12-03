@@ -2,27 +2,17 @@ import {useEffect, useState} from 'react';
 import * as THREE from 'three';
 import { Text } from '@react-three/drei';
 
+
+
 export const VideoPlane = ({setVideoUrl, ...props}:any) => {
-  const videos = ['Osi.mp4', 'Vlan.mp4', 'Subbne.mp4', 'Protocolo.mp4', 'https://www.youtube.com/watch?v=4Bj3QePATuc&ab_channel=DavooXeneizePlus'];
+  const videos = ['Osi.mp4', 'Vlan.mp4', 'Subbne.mp4', 'Protocolo.mp4', 'src="https://www.youtube.com/watch?v=4Bj3QePATuc&ab_channel=DavooXeneizePlus"'];
   const [videoIndex, setVideoIndex] = useState(0);
   const [video, setVideo] = useState<HTMLVideoElement | null>(null);
   const [ ,setIsPaused] = useState(true);
   const [showVideoName, setShowVideoName] = useState(true);
 
-
-const API_KEY = 'AIzaSyAv8FuFSLJjVgo_ERedqxbQMkq04Bu8N_Q'; // Reemplaza esto con tu API key de YouTube
-const VIDEO_ID = '4Bj3QePATuc'; // El ID del video de YouTube
-
-fetch(`https://www.googleapis.com/youtube/v3/videos?id=${VIDEO_ID}&part=snippet,contentDetails,statistics,status&key=${API_KEY}`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error('Error de red al intentar obtener el video de YouTube');
-    }
-    return response.json();
-  })
-  .then(data => console.log(data))
-  .catch(error => console.error('Error:', error));
-  
+  const API_KEY = 'AIzaSyAv8FuFSLJjVgo_ERedqxbQMkq04Bu8N_Q'; // Reemplaza esto con tu API key de YouTube
+const VIDEO_ID = '4Bj3QePATuc';
 
   useEffect(() => {
     const videoElement = document.createElement('video');
@@ -31,6 +21,24 @@ fetch(`https://www.googleapis.com/youtube/v3/videos?id=${VIDEO_ID}&part=snippet,
     videoElement.loop = true;
     videoElement.muted = false; // Asegúrate de que el video no esté silenciado
     setVideo(videoElement);
+
+
+    const fetchVideoDetails = async () => {
+      try {
+        const response = await fetch(`https://www.googleapis.com/youtube/v3/videos?id=${VIDEO_ID}&part=snippet,contentDetails,statistics,status&key=${API_KEY}`);
+        
+        if (!response.ok) {
+          throw new Error('Error de red al intentar obtener el video de YouTube');
+        }
+        
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    };
+
+    fetchVideoDetails();
 
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === 'Space') {
